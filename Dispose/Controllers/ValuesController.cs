@@ -1,36 +1,40 @@
-﻿using Dispose.Models;
+﻿using dispose.Data.Abstract;
+using dispose.Data.Concrete;
+using dispose.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Dispose.Controllers
+namespace dispose.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
     public class ValuesController : ControllerBase
     {
-        [HttpGet]
-        public IActionResult Get()
+        private IUserRepository userRepository;
+        public ValuesController(IUserRepository _userRepository)
         {
-            Customer customer = new Customer();
-            try
+            userRepository = _userRepository;
+        }
+        [HttpGet]
+        public IActionResult Get(int id)
+        {
+            var data =userRepository.Get(id);
+            if (data != null)
             {
-                customer.Add();
-                Console.WriteLine(customer.Get(1).TelNo + " created");
-                var data = customer.Get(1);
-                Console.WriteLine("customer disposed");
+                userRepository.Dispose();
                 return Ok(data);
             }
-            catch (Exception)
-            {
+            else
+                return BadRequest();
 
-                Console.WriteLine("error");
-            }
-            finally
-            {
-                customer.Dispose();
-            }
-            return null;
-
+        }
+        [HttpPost]   
+        public IActionResult Add(User user)
+        {
+            userRepository.Add(user);
+            userRepository.SaveChanges();
+            userRepository.Dispose();
+            return Ok(user);
         }
     }
 }
