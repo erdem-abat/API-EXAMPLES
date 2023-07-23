@@ -1,8 +1,9 @@
 ﻿using dispose.Data.Abstract;
-using dispose.Models;
+using Dispose.Data.Abstract;
+using Dispose.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace dispose.Data.Concrete
+namespace Dispose.Data.Concrete
 {
     public class EfUserRepository : EfGenericRepository<User>, IUserRepository
     {

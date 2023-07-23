@@ -2,7 +2,7 @@
 
 #nullable disable
 
-namespace dispose.Migrations
+namespace Dispose.Migrations
 {
     public partial class initialCreate : Migration
     {

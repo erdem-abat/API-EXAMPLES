@@ -1,7 +1,7 @@
-﻿using dispose.Data.Abstract;
+﻿using Dispose.Data.Abstract;
 using Microsoft.EntityFrameworkCore;
 
-namespace dispose.Data.Concrete
+namespace Dispose.Data.Concrete
 {
     public class EfGenericRepository <T> :IDisposable, IGenericRepository<T> where T : class
     {

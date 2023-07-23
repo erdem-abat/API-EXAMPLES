@@ -1,4 +1,4 @@
-﻿namespace dispose.Data.Abstract
+﻿namespace Dispose.Data.Abstract
 {
     public interface IGenericRepository<T> where T : class
     {

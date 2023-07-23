@@ -1,8 +1,8 @@
-﻿using dispose.Models;
+﻿using Dispose.Models;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 
-namespace dispose.Data
+namespace Dispose.Data
 {
     public class DisposeDbContext : DbContext
     {

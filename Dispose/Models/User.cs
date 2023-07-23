@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.Diagnostics.CodeAnalysis;
 
-namespace dispose.Models
+namespace Dispose.Models
 {
     public class User
     {

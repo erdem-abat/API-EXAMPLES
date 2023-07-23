@@ -1,15 +1,15 @@
 ﻿using dispose.Data.Abstract;
-using dispose.Data.Concrete;
-using dispose.Models;
+using Dispose.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
-namespace dispose.Controllers
+namespace Dispose.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
     public class ValuesController : ControllerBase
     {
+
         private IUserRepository userRepository;
         public ValuesController(IUserRepository _userRepository)
         {
@@ -18,7 +18,7 @@ namespace dispose.Controllers
         [HttpGet]
         public IActionResult Get(int id)
         {
-            var data =userRepository.Get(id);
+            var data = userRepository.Get(id);
             if (data != null)
             {
                 userRepository.Dispose();
@@ -28,7 +28,7 @@ namespace dispose.Controllers
                 return BadRequest();
 
         }
-        [HttpPost]   
+        [HttpPost]
         public IActionResult Add(User user)
         {
             userRepository.Add(user);
@@ -36,5 +36,6 @@ namespace dispose.Controllers
             userRepository.Dispose();
             return Ok(user);
         }
+
     }
 }

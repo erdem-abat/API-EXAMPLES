@@ -1,7 +1,7 @@
-using dispose.Data;
-using dispose.Data.Abstract;
-using dispose.Data.Concrete;
+using Dispose.Data.Concrete;
+using Dispose.Data;
 using Microsoft.EntityFrameworkCore;
+using dispose.Data.Abstract;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -16,7 +16,6 @@ builder.Services.AddTransient<IUserRepository, EfUserRepository>();
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 builder.Services.AddDbContext<DisposeDbContext>(x => x.UseSqlServer(connectionString));
 var app = builder.Build();
-
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
