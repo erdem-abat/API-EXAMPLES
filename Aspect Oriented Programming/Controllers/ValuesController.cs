@@ -7,6 +7,8 @@ namespace Aspect_Oriented_Programming.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [PerformanceAspect]
+    [Logger]
     public class ValuesController : ControllerBase
     {
         [PerformanceAspect]
@@ -14,6 +16,8 @@ namespace Aspect_Oriented_Programming.Controllers
         [HttpGet]
         public IActionResult Get()
         {
+            //LoggerAttribute attribute = new LoggerAttribute();
+            //attribute.OnEnter();
             Student student = new Student();
             //clear cache
             //user permission control
@@ -21,6 +25,7 @@ namespace Aspect_Oriented_Programming.Controllers
             Student();
             student.Name = "Test";
             student.No = 1090;
+            //attribute.OnExit();
             return Ok(student.Name +"      "+ student.No);
         }
         [PerformanceAspect]

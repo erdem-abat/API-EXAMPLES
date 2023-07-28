@@ -1,16 +1,18 @@
 ﻿using System;
 using System.Reflection;
 using Castle.DynamicProxy;
+using PostSharp.Aspects;
 
 namespace Aspect_Oriented_Programming.Attributes
 {
-    [AttributeUsage(AttributeTargets.Method, AllowMultiple = false, Inherited = false)]
+    [AttributeUsage(AttributeTargets.Method |  AttributeTargets.All, AllowMultiple = false, Inherited = false)]
 
     public class LoggerAttribute : Attribute
     {
-        public void OnEnter(Type declaringType, object instance, MethodBase methodbase, object[] values)
+
+        public void OnEnter()
         {
-            this.AppendToFile($"Enter -> {declaringType.Name} {methodbase.Name} {string.Join(" ", values)}");
+            this.AppendToFile("Enter");
         }
 
         public void OnException(Exception e)
