@@ -10,6 +10,7 @@ namespace Aspect_Oriented_Programming.Controllers
     public class ValuesController : ControllerBase
     {
         [PerformanceAspect]
+        [Logger]
         [HttpGet]
         public IActionResult Get()
         {
