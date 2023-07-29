@@ -13,6 +13,7 @@ namespace Aspect_Oriented_Programming.Controllers
     {
         [PerformanceAspect]
         [Logger]
+        [ServiceFilter(typeof(LoggingActionFilter))]
         [HttpGet]
         public IActionResult Get()
         {
@@ -23,6 +24,7 @@ namespace Aspect_Oriented_Programming.Controllers
             //user permission control
             //.....
             Student();
+            student.GetName();
             student.Name = "Test";
             student.No = 1090;
             //attribute.OnExit();
